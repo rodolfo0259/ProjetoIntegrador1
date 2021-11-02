@@ -1,0 +1,56 @@
+@model ControleCelulasWebMvc.Models.Reuniao
+
+@{
+    ViewData["Title"] = "Editar Registros";
+}
+
+<h1>Editar Registros</h1>
+
+<h4>Registro de Reuniões</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DataHoraReuniao" class="control-label"></label>
+                <input asp-for="DataHoraReuniao" class="form-control" />
+                <span asp-validation-for="DataHoraReuniao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CelulaId" class="control-label"></label>
+                <select asp-for="CelulaId" class="form-control" asp-items="ViewBag.CelulaId"></select>
+                <span asp-validation-for="CelulaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PessoaId" class="control-label"></label>
+                <select asp-for="PessoaId" class="form-control" asp-items="ViewBag.PessoaId"></select>
+                <span asp-validation-for="PessoaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a type="button" class="btn btn-warning" asp-action="Index">Voltar para a lista</a>
+                <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Salvar</button>
+            </div>            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Confirma a alteração do registro?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" value="Save" class="btn btn-primary">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+@model IEnumerable<ControleCelulasWebMvc.Models.Reuniao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="card-header">
+        Registros de Reuniões    
+    </div>
+    <div class="card-body">        
+        <p>
+            <a type="button" class="btn btn-primary" asp-action="Create">Novo Registro</a>
+        </p>        
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataHoraReuniao)
+                        </th>
+                        <th>
+                            Célula
+                        </th>
+                        <th>
+                            Membro
+                        </th>
+                        <th class="text-right">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataHoraReuniao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Celula.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+                        </td>
+                        <td class="td-actions text-right">
+                            <a type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" asp-action="Edit" asp-route-id="@item.Id">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a type="button" rel="tooltip" class="btn btn-info btn-just-icon btn-sm" asp-action="Details" asp-route-id="@item.Id">
+                                <i class="material-icons">search</i>    
+                            </a>
+                            <a type="button" rel="tooltip" class="btn btn-danger  btn-just-icon btn-sm" asp-action="Delete" asp-route-id="@item.Id">
+                                <i class="material-icons">close</i>
+                            </a>
+                        </td>
+                    </tr>
+            }
+                </tbody>
+            </table>
+        </div>        
+    </div>
+</div>

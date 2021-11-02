@@ -1,0 +1,55 @@
+@model IEnumerable<ControleCelulasWebMvc.Models.Coordenador>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Coordenadores</h1>
+
+<p>
+    <a type="button" class="btn btn-primary" asp-action="Create">Novo cadastro</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th class="text-right">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td class="td-actions text-right">
+                    <a type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a type="button" rel="tooltip" class="btn btn-info btn-just-icon btn-sm" asp-action="Details" asp-route-id="@item.Id">
+                        <i class="material-icons">search</i>    
+                    </a>
+                    <a type="button" rel="tooltip" class="btn btn-danger  btn-just-icon btn-sm" asp-action="Delete" asp-route-id="@item.Id">
+                        <i class="material-icons">close</i>
+                    </a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

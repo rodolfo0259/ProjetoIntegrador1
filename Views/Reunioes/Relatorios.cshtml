@@ -1,0 +1,31 @@
+@model ControleCelulasWebMvc.Models.Pessoa
+
+@{
+    ViewData["Title"] = "Relatórios";
+}
+
+<form asp-action="Pesquisa" method="post">
+    <fieldset>
+        <div class="card">
+            <div class="card-header">
+                Relatório de Frequência
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Data">Data</label>
+                        <input type="date" name="Data" class="form-control" />                        
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="CelulaId">Célula</label>
+                        <select asp-for="CelulaId" asp-items="ViewBag.CelulaId" name="CelulaId" class="form-control">
+                            <option selected>Escolher...</option>
+                        </select>
+                        <span asp-validation-for="CelulaId" class="text-danger"></span>
+                    </div>
+                </div>        
+                <button type="submit" class="btn btn-primary col-md-12">Pesquisar</button>
+            </div>    
+        </div>
+    </fieldset>
+</form>

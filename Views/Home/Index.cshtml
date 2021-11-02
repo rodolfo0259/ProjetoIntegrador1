@@ -1,0 +1,56 @@
+﻿@model ControleCelulasWebMvc.Models.Reuniao
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Bem vindo(a)!</h1>
+        <p class="lead">Este sistema é responsável por controlar a frequência de membros em células.</p>
+        <hr class="my-4">
+        <p>Clique no botão abaixo para iniciar um registro ou navegue pelos menus na aba superior.</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Registrar</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Novo Registro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-controller="Reunioes" asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="DataHoraReuniao" class="control-label"></label>
+                                <input asp-for="DataHoraReuniao" class="form-control" />
+                                <span asp-validation-for="DataHoraReuniao" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CelulaId" class="control-label"></label>
+                                <select asp-for="CelulaId" class ="form-control" asp-items="ViewBag.CelulaId">
+                                    <option>Selecione...</option>
+                                </select>
+                                <span asp-validation-for="CelulaId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PessoaId" class="control-label"></label>
+                                <select asp-for="PessoaId" class ="form-control" asp-items="ViewBag.PessoaId">
+                                    <option>Selecione...</option>
+                                </select>
+                                <span asp-validation-for="PessoaId" class="text-danger"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="submit" value="Create" class="btn btn-primary">Confirmar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>

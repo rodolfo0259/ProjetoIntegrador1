@@ -1,0 +1,36 @@
+@model ControleCelulasWebMvc.Models.Reuniao
+
+@{
+    ViewData["Title"] = "Detalhes do Registro";
+}
+
+<h1>Detalhes do Registro</h1>
+
+<div>
+    <h4>Registros de Reuniões</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataHoraReuniao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataHoraReuniao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Celula)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Celula.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a type="button" class="btn btn-warning" asp-action="Index">Voltar para a lista</a>
+    <a type="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>    
+</div>
